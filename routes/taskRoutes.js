@@ -12,8 +12,7 @@ const taskRouter = express.Router();
 //Get all tasks
 taskRouter.get("/", auth, async (req, res) => {
     try {
-        const { userId } = req.body;
-        const userTask = await taskModel.find({userId}) ;
+        const userTask = await taskModel.find() ;
         res.status(200).json({tasks: userTask});
     } catch (err) {
         res.status(500).json({msg: err.message});
@@ -25,8 +24,7 @@ taskRouter.get("/", auth, async (req, res) => {
 taskRouter.get("/:id", auth, async (req, res) => {
     try {
         const { id } = req.params;
-        const { userId } = req.body;
-        const userTask = await taskModel.findOne({_id: id, userId}); ;
+        const userTask = await taskModel.findOne({_id: id}) ;
         res.status(200).json({tasks: userTask});
     } catch (err) {
         res.status(500).json({msg: err.message});
