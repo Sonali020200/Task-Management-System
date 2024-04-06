@@ -113,6 +113,8 @@ To get started with the Task Management System API, follow these steps:
 
    `npm install`
 
+   `npm run server`
+
 ## Deployed link
 
 https://task-management-system-3.onrender.com/
