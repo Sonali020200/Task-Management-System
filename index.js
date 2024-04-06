@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-// const { userRouter } = require('./routes/user.route');
 const { connection } = require('./config/db');
 const { taskRouter } = require('./routes/taskRoutes');
+const { userRouter } = require('./routes/userRoutes');
 
 
 
@@ -16,7 +16,7 @@ const app = express();
 app.use(express.json());
 app.use(express.text());
 app.use(cors());
-// app.use('/users', userRouter);
+app.use('/users', userRouter);
 app.use('/tasks', taskRouter);
 
 
