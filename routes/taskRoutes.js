@@ -9,19 +9,19 @@ const taskRouter = express.Router();
 
 
 
-
+//Get all tasks
 taskRouter.get("/", auth, async (req, res) => {
     try {
         const { userId } = req.body;
         const userTask = await taskModel.find({userId}) ;
         res.status(200).json({tasks: userTask});
     } catch (err) {
-        res.status(500).json({msg: "Internal server error", err});
+        res.status(500).json({msg: err.message});
     }
 })
 
 
-
+//Get a task by ID
 taskRouter.get("/:id", auth, async (req, res) => {
     try {
         const { id } = req.params;
@@ -29,12 +29,12 @@ taskRouter.get("/:id", auth, async (req, res) => {
         const userTask = await taskModel.findOne({_id: id, userId}); ;
         res.status(200).json({tasks: userTask});
     } catch (err) {
-        res.status(500).json({msg: "Internal server error", err});
+        res.status(500).json({msg: err.message});
     }
 })
 
 
-
+//Create a new task
 taskRouter.post("/add", auth, async (req, res) => {
     try {
         const { title, description, dueDate, priority, status, userId } = req.body;
@@ -42,12 +42,12 @@ taskRouter.post("/add", auth, async (req, res) => {
         await newTask.save();
         res.status(200).json({msg: "Task added successfully!", newTask});
     } catch (err) {
-        res.status(500).json({msg: "Internal server error", err});
+        res.status(400).json({msg: err.message});
     }
 })
 
 
-
+//Update a task
 taskRouter.patch("/update/:id", auth, async (req, res) => {
     try {
         const { id } = req.params;
@@ -55,19 +55,19 @@ taskRouter.patch("/update/:id", auth, async (req, res) => {
         const updatedTask = await taskModel.findByIdAndUpdate({_id: id}, { title, description, dueDate, priority, status });
         res.status(200).json({msg: "Task updated successfully", updatedTask});
     } catch (err) {
-        res.status(500).json({msg: "Internal server error", err});
+        res.status(400).json({msg: err.message});
     }
 })
 
 
-
+//Delete a task
 taskRouter.delete("/delete/:id", auth, async (req, res) => {
     try {
         const { id } = req.params;
         const deletedTask = await taskModel.findByIdAndDelete({_id: id});
         res.status(200).json({msg: "Task deleted successfully", deletedTask});
     } catch (err) {
-        res.status(500).json({msg: "Internal server error", err});
+        res.status(500).json({msg: err.message});
     }
 })
 

@@ -56,7 +56,7 @@ userRouter.post("/login", async (req, res) => {
             res.send("Wrong Credntials!")
         }
     } catch (err) {
-        res.status(400).json({msg: "Internal Server Error", err});
+        res.status(400).json({msg: err.message});
     }
 })
 
@@ -69,7 +69,7 @@ userRouter.get('/logout', async (req, res) => {
       await tokenToBeBlacklisted.save();
       res.status(200).json({ msg: 'Logout successful!' });
     } catch (err) {
-      res.status(400).json({msg: 'Internal server error', err});
+      res.status(400).json({msg: err.message});
     }
 });
 
