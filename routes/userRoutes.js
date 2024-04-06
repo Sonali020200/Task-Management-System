@@ -53,7 +53,7 @@ userRouter.post("/login", async (req, res) => {
                 }
             })
         } else {
-            res.send("Wrong Credntials!")
+            res.send("Invalid username or password!")
         }
     } catch (err) {
         res.status(400).json({msg: err.message});
