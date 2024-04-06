@@ -41,3 +41,16 @@ Only authenticated users can perform CRUD operations on tasks.
 - Implemented JWT-based authentication for securing the API endpoints.
 
 
+## Getting Started
+
+To get started with the Task Management System API, follow these steps:
+
+1. Clone this repository:
+   ```bash
+   `git clone https://github.com/yourusername/task-management-api.git`
+
+   `cd task-management-api`
+
+   `npm install`
+
+
