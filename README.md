@@ -1,6 +1,14 @@
 # Task-Management-System
 
-This repository contains a RESTful API for a Task Management System built using Node.js with Express.js and MongoDB.
+Welcome to the Task Management System project. Our application simplifies task management, empowering users to efficiently organize their daily tasks with ease. By providing functionalities for task creation, retrieval, updating, and deletion, users can seamlessly manage their tasks after registering and logging in, ensuring a personalized and secure experience based on their authentication credentials.
+
+
+## Technology Stack
+
+- Node.js: A powerful JavaScript runtime environment for building server-side applications.
+- Express.js: A minimalist web framework for Node.js that simplifies building APIs and web applications.
+- MongoDB: A flexible NoSQL database system for storing and managing task data.
+
 
 ## Objective
 
