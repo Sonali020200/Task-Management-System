@@ -20,16 +20,68 @@ The objective of this project is to develop a RESTful API that allows users to p
 
 Defined a MongoDB schema for tasks with fields such as title, description, due date, priority, status, etc.
 
-### API Endpoints
+## API Endpoints
 
-Implemented CRUD operations for tasks using RESTful API endpoints.
+### Task Routes
 
-Include endpoints for:
-- Creating a new task
-- Retrieving a list of all tasks
-- Retrieving a single task by ID
-- Updating an existing task
-- Deleting a task
+#### Get all tasks
+- **Endpoint:** `GET /api/tasks`
+- **Description:** Retrieves a list of all tasks.
+- **Authentication:** Requires authentication using JWT token.
+- **Response:** Returns an array of tasks in JSON format.
+
+#### Get a task by ID
+- **Endpoint:** `GET /api/tasks/:id`
+- **Description:** Retrieves a single task by its ID.
+- **Authentication:** Requires authentication using JWT token.
+- **Parameters:**
+  - `id`: ID of the task to retrieve.
+- **Response:** Returns the task object in JSON format.
+
+#### Create a new task
+- **Endpoint:** `POST /api/tasks/add`
+- **Description:** Creates a new task.
+- **Authentication:** Requires authentication using JWT token.
+- **Request Body:** JSON object containing task details (title, description, dueDate, priority, status, userId).
+- **Response:** Returns a success message and the newly created task object in JSON format.
+
+#### Update a task
+- **Endpoint:** `PATCH /api/tasks/update/:id`
+- **Description:** Updates an existing task.
+- **Authentication:** Requires authentication using JWT token.
+- **Parameters:**
+  - `id`: ID of the task to update.
+- **Request Body:** JSON object containing updated task details (title, description, dueDate, priority, status).
+- **Response:** Returns a success message and the updated task object in JSON format.
+
+#### Delete a task
+- **Endpoint:** `DELETE /api/tasks/delete/:id`
+- **Description:** Deletes a task.
+- **Authentication:** Requires authentication using JWT token.
+- **Parameters:**
+  - `id`: ID of the task to delete.
+- **Response:** Returns a success message and the deleted task object in JSON format.
+
+### User Routes
+
+#### User registration
+- **Endpoint:** `POST /api/users/register`
+- **Description:** Registers a new user.
+- **Request Body:** JSON object containing user details (userName, email, pass).
+- **Response:** Returns a success message and the registered user object in JSON format.
+
+#### User login
+- **Endpoint:** `POST /api/users/login`
+- **Description:** Logs in an existing user.
+- **Request Body:** JSON object containing user credentials (email, pass).
+- **Response:** Returns a success message, the user object, and a JWT token in JSON format.
+
+#### User logout
+- **Endpoint:** `GET /api/users/logout`
+- **Description:** Logs out the current user and blacklists the JWT token.
+- **Authentication:** Requires authentication using JWT token in the request headers.
+- **Response:** Returns a success message in JSON format.
+
 
 ### Validation and Error Handling
 
