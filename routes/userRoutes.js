@@ -28,7 +28,7 @@ userRouter.post("/register", async (req, res) => {
                     pass: hash
                 });
                 await user.save();
-                res.status(200).json({msg: "Registration Successful!", newUser});
+                res.status(200).json({msg: "Registration Successful!", user});
             }
         });
 
